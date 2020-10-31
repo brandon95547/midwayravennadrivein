@@ -1,0 +1,34 @@
+{
+  "name": "Midway Drive In",
+  "displayName": "Midway Drive In",
+  "expo": {
+    "name": "Midway Drive In",
+    "description": "No description",
+    "slug": "midway-drive-in",
+    "privacy": "public",
+    "version": "1.5",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/img/icon.png",
+    "scheme": "midwaydrivein",
+    "splash": {
+      "image": "./assets/img/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "packagerOpts": {},
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.raptorwebsolutions.midwaydriveinapp",
+      "buildNumber": "1.0.22",
+      "associatedDomains": [
+        "applinks:midwaydrivein.raptorwebsolutions.com"
+      ]
+    },
+    "android": {
+      "package": "com.raptorwebsolutions.midwaydriveinapp",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 6
+    }
+  }
+}
