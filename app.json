@@ -6,7 +6,7 @@
     "description": "No description",
     "slug": "midway-drive-in",
     "privacy": "public",
-    "version": "1.5",
+    "version": "1.6",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/img/icon.png",
@@ -28,7 +28,7 @@
     "android": {
       "package": "com.raptorwebsolutions.midwaydriveinapp",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 6
+      "versionCode": 7
     }
   }
 }

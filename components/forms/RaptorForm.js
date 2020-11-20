@@ -1,7 +1,6 @@
-import React, { Component, useState } from 'react'
-import { StyleSheet, View, ScrollView, Text, TextInput, Button, TouchableOpacity, TouchableHighlight, AsyncStorage, Picker, Modal, Alert } from 'react-native'
-import CheckBox from '@react-native-community/checkbox'
-import { Left, Right, Icon, Drawer } from 'native-base'
+import React, { Component } from 'react'
+import { StyleSheet, View, ScrollView, Text, TouchableHighlight, Modal, Alert, Switch } from 'react-native'
+import { CustomPicker } from 'react-native-custom-picker'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component'
 import { colors } from '../GlobalStyles'
 import UserContext from '../../UserContext'
@@ -123,8 +122,12 @@ export default class RaptorForm extends React.Component {
       "Coffee",
     ]
 
-    if(itemsThatNeedOptions.includes(title) && quantity != 0) {
+    if(itemsThatNeedOptions.includes(title) && quantity != 0 && quantity !== null) {
       this.setModalVisible(true)
+    }
+
+    if(quantity === null) {
+      quantity = 0
     }
 
     let cart = {
@@ -794,19 +797,15 @@ export default class RaptorForm extends React.Component {
   buildItems() {
     const { publicFoodItems } = this.context
     const state = this.state
+    const options = ["0", 1, 2, 3]
     const foodItemDropdown = (key, index, price, title) => (
       <>
-        <Picker
-          style={RaptorFormStyles.onePicker} itemStyle={RaptorFormStyles.onePickerItem}
-          selectedValue={this.state.checked[key]}
-          style={RaptorFormStyles.picker}
+        <CustomPicker
+          options={options}
+          textStyle={{fontSize: 24}}
+          value={this.state.checked[key]}
           onValueChange={(quantity) => this.updateFoodItemQuantity(index, key, price, title, quantity)}
-        >
-          <Picker.Item label="0" value="0" />
-          <Picker.Item label="1" value="1" />
-          <Picker.Item label="2" value="2" />
-          <Picker.Item label="3" value="3" />
-        </Picker>
+        />
       </>
     )
 
@@ -818,10 +817,12 @@ export default class RaptorForm extends React.Component {
       console.log('value is', value);
       return <View style={styles.foodOption}>
         <Text style={{ flex: 1 }}>{title}</Text>
-        <CheckBox
-          value={value}
+        <Switch
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={value ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
           onValueChange={() => this.updateFoodItem(label, ckey)}
-          style={styles.checkbox}
+          value={value}
         />
       </View>
     }
